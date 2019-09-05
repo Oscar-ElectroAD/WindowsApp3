@@ -100,19 +100,13 @@ Public Class Form1
         'Txt_data.Text = strRead
 
     End Sub
-
-    Private Sub OperariosBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
-        Me.Validate()
-        Me.OperariosBindingSource.EndEdit()
-        Me.TableAdapterManager.UpdateAll(Me.DataSet1)
-
-    End Sub
-
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         leertarjeta()
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: esta línea de código carga datos en la tabla 'DataSet1.EAD_Horario_Productivo' Puede moverla o quitarla según sea necesario.
+        Me.EAD_Horario_ProductivoTableAdapter.Fill(Me.DataSet1.EAD_Horario_Productivo)
 
         Dim tmphdev As Integer
         Dim i As Integer
@@ -183,20 +177,38 @@ Public Class Form1
                 Label3.Visible = False
                 Exit Sub
             End Try
+
             If EAD_marcajesBindingSource.Count = 0 Then
-                    Dim newrow As DataRow
-                    newrow = DataSet1.EAD_marcajes.NewRow
-                    newrow("Fecha") = Date.Now
-                    newrow("Operario") = OperariosBindingSource.Current("Operario")
-                    DataSet1.EAD_marcajes.Rows.Add(newrow)
-                    Me.EAD_marcajesTableAdapter.Update(DataSet1.EAD_marcajes)
-                    Label3.Visible = True
-                    Label3.Text = OperariosBindingSource.Current("NombreOperario")
-                    Label3.Update()
-                    System.Threading.Thread.Sleep(1000)
-                    Label3.Visible = False
-                Else
-                    Label2.Visible = True
+                'Completamos la tabla de entradas en la empresa
+                Dim newrow As DataRow
+                newrow = DataSet1.EAD_marcajes.NewRow
+                newrow("Fecha") = Date.Now
+                newrow("Operario") = OperariosBindingSource.Current("Operario")
+                DataSet1.EAD_marcajes.Rows.Add(newrow)
+                Me.EAD_marcajesTableAdapter.Update(DataSet1.EAD_marcajes)
+
+                'Completamos la tabla de control horario
+                Dim newrowHorario As DataRow
+                newrowHorario = DataSet1.EAD_Horario_Productivo.NewRow
+                newrowHorario("CodigoEmpresa") = 1
+                newrowHorario("ID") = Guid.NewGuid
+                newrowHorario("CodigoTarjeta") = TextBox1.Text
+                newrowHorario("CodigoOperario") = OperariosBindingSource.Current("Operario")
+                newrowHorario("NombreOperario") = OperariosBindingSource.Current("NombreOperario")
+                newrowHorario("EntradaSalida") = "?"
+                newrowHorario("Fecha") = Date.Now.ToString("dd/MM/yyyy")
+                newrowHorario("Hora") = Date.Now.ToString("HH:mm")
+
+                DataSet1.EAD_Horario_Productivo.Rows.Add(newrowHorario)
+                Me.EAD_Horario_ProductivoTableAdapter.Update(DataSet1.EAD_Horario_Productivo)
+
+                Label3.Visible = True
+                Label3.Text = OperariosBindingSource.Current("NombreOperario")
+                Label3.Update()
+                System.Threading.Thread.Sleep(1000)
+                Label3.Visible = False
+            Else
+                Label2.Visible = True
                     Label2.Update()
                     System.Threading.Thread.Sleep(1000)
                     Label2.Visible = False

@@ -28,6 +28,15 @@ Partial Class Form1
         Me.btn_getcardUID = New System.Windows.Forms.Button()
         Me.btn_read = New System.Windows.Forms.Button()
         Me.OperariosDataGridView = New System.Windows.Forms.DataGridView()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.EAD_marcajesDataGridView = New System.Windows.Forms.DataGridView()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.DataGridViewTextBoxColumn33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EAD_marcajesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DataSet1 = New WindowsApp3.DataSet1()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -61,23 +70,27 @@ Partial Class Form1
         Me.DataGridViewTextBoxColumn31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.OperariosBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DataSet1 = New WindowsApp3.DataSet1()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.EAD_marcajesDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.EAD_marcajesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.OperariosTableAdapter = New WindowsApp3.DataSet1TableAdapters.OperariosTableAdapter()
         Me.TableAdapterManager = New WindowsApp3.DataSet1TableAdapters.TableAdapterManager()
         Me.EAD_marcajesTableAdapter = New WindowsApp3.DataSet1TableAdapters.EAD_marcajesTableAdapter()
+        Me.EAD_Horario_ProductivoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.EAD_Horario_ProductivoTableAdapter = New WindowsApp3.DataSet1TableAdapters.EAD_Horario_ProductivoTableAdapter()
+        Me.EAD_Horario_ProductivoDataGridView = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn35 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn36 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn37 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn38 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn39 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn40 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn41 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn42 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.OperariosDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.OperariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EAD_marcajesDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EAD_marcajesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.OperariosBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EAD_Horario_ProductivoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EAD_Horario_ProductivoDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btn_initial
@@ -126,6 +139,75 @@ Partial Class Form1
         Me.OperariosDataGridView.Name = "OperariosDataGridView"
         Me.OperariosDataGridView.Size = New System.Drawing.Size(238, 104)
         Me.OperariosDataGridView.TabIndex = 5
+        '
+        'Timer1
+        '
+        '
+        'EAD_marcajesDataGridView
+        '
+        Me.EAD_marcajesDataGridView.AutoGenerateColumns = False
+        Me.EAD_marcajesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.EAD_marcajesDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn33, Me.DataGridViewTextBoxColumn34})
+        Me.EAD_marcajesDataGridView.DataSource = Me.EAD_marcajesBindingSource
+        Me.EAD_marcajesDataGridView.Location = New System.Drawing.Point(298, 359)
+        Me.EAD_marcajesDataGridView.Name = "EAD_marcajesDataGridView"
+        Me.EAD_marcajesDataGridView.Size = New System.Drawing.Size(300, 220)
+        Me.EAD_marcajesDataGridView.TabIndex = 5
+        '
+        'Label1
+        '
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 100.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(181, 9)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(470, 153)
+        Me.Label1.TabIndex = 6
+        Me.Label1.Text = "Label1"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 30.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(43, 188)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(705, 46)
+        Me.Label2.TabIndex = 7
+        Me.Label2.Text = "FICHAJE EN MENOS DE 5 MINUTOS"
+        Me.Label2.Visible = False
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 30.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(43, 188)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(705, 46)
+        Me.Label3.TabIndex = 8
+        Me.Label3.Text = "FICHAJE EN MENOS DE 5 MINUTOS"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Label3.Visible = False
+        '
+        'DataGridViewTextBoxColumn33
+        '
+        Me.DataGridViewTextBoxColumn33.DataPropertyName = "Operario"
+        Me.DataGridViewTextBoxColumn33.HeaderText = "Operario"
+        Me.DataGridViewTextBoxColumn33.Name = "DataGridViewTextBoxColumn33"
+        '
+        'DataGridViewTextBoxColumn34
+        '
+        Me.DataGridViewTextBoxColumn34.DataPropertyName = "Fecha"
+        Me.DataGridViewTextBoxColumn34.HeaderText = "Fecha"
+        Me.DataGridViewTextBoxColumn34.Name = "DataGridViewTextBoxColumn34"
+        '
+        'EAD_marcajesBindingSource
+        '
+        Me.EAD_marcajesBindingSource.DataMember = "EAD_marcajes"
+        Me.EAD_marcajesBindingSource.DataSource = Me.DataSet1
+        '
+        'DataSet1
+        '
+        Me.DataSet1.DataSetName = "DataSet1"
+        Me.DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'DataGridViewTextBoxColumn1
         '
@@ -324,75 +406,6 @@ Partial Class Form1
         Me.OperariosBindingSource.DataMember = "Operarios"
         Me.OperariosBindingSource.DataSource = Me.DataSet1
         '
-        'DataSet1
-        '
-        Me.DataSet1.DataSetName = "DataSet1"
-        Me.DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'Timer1
-        '
-        '
-        'EAD_marcajesDataGridView
-        '
-        Me.EAD_marcajesDataGridView.AutoGenerateColumns = False
-        Me.EAD_marcajesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.EAD_marcajesDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn33, Me.DataGridViewTextBoxColumn34})
-        Me.EAD_marcajesDataGridView.DataSource = Me.EAD_marcajesBindingSource
-        Me.EAD_marcajesDataGridView.Location = New System.Drawing.Point(298, 359)
-        Me.EAD_marcajesDataGridView.Name = "EAD_marcajesDataGridView"
-        Me.EAD_marcajesDataGridView.Size = New System.Drawing.Size(300, 220)
-        Me.EAD_marcajesDataGridView.TabIndex = 5
-        '
-        'DataGridViewTextBoxColumn33
-        '
-        Me.DataGridViewTextBoxColumn33.DataPropertyName = "Operario"
-        Me.DataGridViewTextBoxColumn33.HeaderText = "Operario"
-        Me.DataGridViewTextBoxColumn33.Name = "DataGridViewTextBoxColumn33"
-        '
-        'DataGridViewTextBoxColumn34
-        '
-        Me.DataGridViewTextBoxColumn34.DataPropertyName = "Fecha"
-        Me.DataGridViewTextBoxColumn34.HeaderText = "Fecha"
-        Me.DataGridViewTextBoxColumn34.Name = "DataGridViewTextBoxColumn34"
-        '
-        'EAD_marcajesBindingSource
-        '
-        Me.EAD_marcajesBindingSource.DataMember = "EAD_marcajes"
-        Me.EAD_marcajesBindingSource.DataSource = Me.DataSet1
-        '
-        'Label1
-        '
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 100.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(181, 9)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(470, 153)
-        Me.Label1.TabIndex = 6
-        Me.Label1.Text = "Label1"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 30.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(43, 188)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(705, 46)
-        Me.Label2.TabIndex = 7
-        Me.Label2.Text = "FICHAJE EN MENOS DE 5 MINUTOS"
-        Me.Label2.Visible = False
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 30.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(43, 188)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(705, 46)
-        Me.Label3.TabIndex = 8
-        Me.Label3.Text = "FICHAJE EN MENOS DE 5 MINUTOS"
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.Label3.Visible = False
-        '
         'OperariosTableAdapter
         '
         Me.OperariosTableAdapter.ClearBeforeFill = True
@@ -400,6 +413,7 @@ Partial Class Form1
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.EAD_Horario_ProductivoTableAdapter = Nothing
         Me.TableAdapterManager.EAD_HuellasTableAdapter = Nothing
         Me.TableAdapterManager.EAD_marcajesTableAdapter = Nothing
         Me.TableAdapterManager.OperariosTableAdapter = Me.OperariosTableAdapter
@@ -409,11 +423,80 @@ Partial Class Form1
         '
         Me.EAD_marcajesTableAdapter.ClearBeforeFill = True
         '
+        'EAD_Horario_ProductivoBindingSource
+        '
+        Me.EAD_Horario_ProductivoBindingSource.DataMember = "EAD_Horario_Productivo"
+        Me.EAD_Horario_ProductivoBindingSource.DataSource = Me.DataSet1
+        '
+        'EAD_Horario_ProductivoTableAdapter
+        '
+        Me.EAD_Horario_ProductivoTableAdapter.ClearBeforeFill = True
+        '
+        'EAD_Horario_ProductivoDataGridView
+        '
+        Me.EAD_Horario_ProductivoDataGridView.AutoGenerateColumns = False
+        Me.EAD_Horario_ProductivoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.EAD_Horario_ProductivoDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn35, Me.DataGridViewTextBoxColumn36, Me.DataGridViewTextBoxColumn37, Me.DataGridViewTextBoxColumn38, Me.DataGridViewTextBoxColumn39, Me.DataGridViewTextBoxColumn40, Me.DataGridViewTextBoxColumn41, Me.DataGridViewTextBoxColumn42})
+        Me.EAD_Horario_ProductivoDataGridView.DataSource = Me.EAD_Horario_ProductivoBindingSource
+        Me.EAD_Horario_ProductivoDataGridView.Location = New System.Drawing.Point(604, 469)
+        Me.EAD_Horario_ProductivoDataGridView.Name = "EAD_Horario_ProductivoDataGridView"
+        Me.EAD_Horario_ProductivoDataGridView.Size = New System.Drawing.Size(300, 220)
+        Me.EAD_Horario_ProductivoDataGridView.TabIndex = 9
+        '
+        'DataGridViewTextBoxColumn35
+        '
+        Me.DataGridViewTextBoxColumn35.DataPropertyName = "CodigoEmpresa"
+        Me.DataGridViewTextBoxColumn35.HeaderText = "CodigoEmpresa"
+        Me.DataGridViewTextBoxColumn35.Name = "DataGridViewTextBoxColumn35"
+        '
+        'DataGridViewTextBoxColumn36
+        '
+        Me.DataGridViewTextBoxColumn36.DataPropertyName = "ID"
+        Me.DataGridViewTextBoxColumn36.HeaderText = "ID"
+        Me.DataGridViewTextBoxColumn36.Name = "DataGridViewTextBoxColumn36"
+        '
+        'DataGridViewTextBoxColumn37
+        '
+        Me.DataGridViewTextBoxColumn37.DataPropertyName = "CodigoTarjeta"
+        Me.DataGridViewTextBoxColumn37.HeaderText = "CodigoTarjeta"
+        Me.DataGridViewTextBoxColumn37.Name = "DataGridViewTextBoxColumn37"
+        '
+        'DataGridViewTextBoxColumn38
+        '
+        Me.DataGridViewTextBoxColumn38.DataPropertyName = "CodigoOperario"
+        Me.DataGridViewTextBoxColumn38.HeaderText = "CodigoOperario"
+        Me.DataGridViewTextBoxColumn38.Name = "DataGridViewTextBoxColumn38"
+        '
+        'DataGridViewTextBoxColumn39
+        '
+        Me.DataGridViewTextBoxColumn39.DataPropertyName = "NombreOperario"
+        Me.DataGridViewTextBoxColumn39.HeaderText = "NombreOperario"
+        Me.DataGridViewTextBoxColumn39.Name = "DataGridViewTextBoxColumn39"
+        '
+        'DataGridViewTextBoxColumn40
+        '
+        Me.DataGridViewTextBoxColumn40.DataPropertyName = "EntradaSalida"
+        Me.DataGridViewTextBoxColumn40.HeaderText = "EntradaSalida"
+        Me.DataGridViewTextBoxColumn40.Name = "DataGridViewTextBoxColumn40"
+        '
+        'DataGridViewTextBoxColumn41
+        '
+        Me.DataGridViewTextBoxColumn41.DataPropertyName = "Fecha"
+        Me.DataGridViewTextBoxColumn41.HeaderText = "Fecha"
+        Me.DataGridViewTextBoxColumn41.Name = "DataGridViewTextBoxColumn41"
+        '
+        'DataGridViewTextBoxColumn42
+        '
+        Me.DataGridViewTextBoxColumn42.DataPropertyName = "Hora"
+        Me.DataGridViewTextBoxColumn42.HeaderText = "Hora"
+        Me.DataGridViewTextBoxColumn42.Name = "DataGridViewTextBoxColumn42"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(808, 571)
+        Me.ClientSize = New System.Drawing.Size(979, 750)
+        Me.Controls.Add(Me.EAD_Horario_ProductivoDataGridView)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
@@ -429,10 +512,12 @@ Partial Class Form1
         Me.Text = "EAD Control horario"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         CType(Me.OperariosDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.OperariosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataSet1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EAD_marcajesDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EAD_marcajesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataSet1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.OperariosBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EAD_Horario_ProductivoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EAD_Horario_ProductivoDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -488,4 +573,15 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
+    Friend WithEvents EAD_Horario_ProductivoBindingSource As BindingSource
+    Friend WithEvents EAD_Horario_ProductivoTableAdapter As DataSet1TableAdapters.EAD_Horario_ProductivoTableAdapter
+    Friend WithEvents EAD_Horario_ProductivoDataGridView As DataGridView
+    Friend WithEvents DataGridViewTextBoxColumn35 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn36 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn37 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn38 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn39 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn40 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn41 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn42 As DataGridViewTextBoxColumn
 End Class
