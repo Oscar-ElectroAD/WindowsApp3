@@ -55,49 +55,13 @@ Public Class Form1
         Dim i As Integer
         Dim password() As Byte = System.Text.Encoding.ASCII.GetBytes("ffffffffffff")
         Dim byteValue2 As String = System.Text.Encoding.Default.GetString(password)
-        'Dim numbers As String = 
-        ' password = {ff, ff, ff, ff, ff, ff}
-        ' UpdateCardReadPara()
-        'password = 
-        '  Dim red() As Byte = {ff, ff, ff, "ff", "ff", "ff"}
-        ' Dim red2 As String = System.Text.Encoding.Default.GetString(red)
+
         For i = 0 To 6
-            '  TextBox1.Text = TextBox1.Text & vbCrLf & Reader.fw_load_key(icdev, 4, i, red2)  'verify key
-
             TextBox1.Text = TextBox1.Text & vbCrLf & Reader.fw_authentication(icdev, i, i)
-            'For j = 1 To 16
-            '    ' Reader.fw_write(icdev, 0, strRead(j))
-            '    TextBox1.Text = TextBox1.Text &' vbCrLf & Reader.fw_read(icdev, 0, databuf(j))
-            '    TextBox1.Update()
-            'Next j
-
         Next i
 
 
-        'If st <> 0 Then
-        '    List1.Items.Add("Call fw_authentication() function error. Confirm that do find card before!")
-        '    ' Exit Sub
-        'End If
-        'List1.Items.Add("Call fw_authentication() function success!")
 
-        'st = Reader.fw_read(icdev, block, databuf(0))   'read card
-        'If st <> 0 Then
-        '    List1.Items.Add("Call fw_read function error")
-        '    'Exit Sub
-
-        'End If
-        'List1.Items.Add("Call fw_read function success")
-
-        'If (RadioBtn_Hex.Checked() = True) Then
-        '    'read as hex string
-        '    Call Reader.hex_a(databuff32_hex(0), databuf(0), 32)
-        '    strRead = System.Text.Encoding.Default.GetString(databuff32_hex)
-        'Else
-        '    'read as ASC string
-        '    strRead = System.Text.Encoding.Default.GetString(databuf)
-        'End If
-
-        'Txt_data.Text = strRead
 
     End Sub
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -107,6 +71,8 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: esta línea de código carga datos en la tabla 'DataSet1.EAD_Horario_Productivo' Puede moverla o quitarla según sea necesario.
         Me.EAD_Horario_ProductivoTableAdapter.Fill(Me.DataSet1.EAD_Horario_Productivo)
+        'TODO: esta línea de código carga datos en la tabla 'DataSet1.EAD_Horario_Productivo' Puede moverla o quitarla según sea necesario.
+        '  Me.EAD_Horario_ProductivoTableAdapter.Fill(Me.DataSet1.EAD_Horario_Productivo)
 
         Dim tmphdev As Integer
         Dim i As Integer
@@ -187,28 +153,40 @@ Public Class Form1
                 DataSet1.EAD_marcajes.Rows.Add(newrow)
                 Me.EAD_marcajesTableAdapter.Update(DataSet1.EAD_marcajes)
 
-                'Completamos la tabla de control horario
-                Dim newrowHorario As DataRow
-                newrowHorario = DataSet1.EAD_Horario_Productivo.NewRow
-                newrowHorario("CodigoEmpresa") = 1
-                newrowHorario("ID") = Guid.NewGuid
-                newrowHorario("CodigoTarjeta") = TextBox1.Text
-                newrowHorario("CodigoOperario") = OperariosBindingSource.Current("Operario")
-                newrowHorario("NombreOperario") = OperariosBindingSource.Current("NombreOperario")
-                newrowHorario("EntradaSalida") = "?"
-                newrowHorario("Fecha") = Date.Now.ToString("dd/MM/yyyy")
-                newrowHorario("Hora") = Date.Now.ToString("HH:mm")
+                ''Completamos la tabla de control horario
+                'Dim newrowHorario As DataRow
+                'newrowHorario = DataSet1.EAD_Horario_Productivo.NewRow
+                'newrowHorario("CodigoEmpresa") = 1
+                'newrowHorario("ID") = Guid.NewGuid
+                'newrowHorario("CodigoTarjeta") = TextBox1.Text
+                'newrowHorario("CodigoOperario") = OperariosBindingSource.Current("Operario")
+                'newrowHorario("NombreOperario") = OperariosBindingSource.Current("NombreOperario")
+                '' Comprobamos si el operario esta dentro o fuera 
+                'If OperariosBindingSource.Current("EntradaSalida") = "I" Then
+                '    OperariosBindingSource.Current("EntradaSalida") = "O"
+                '    newrowHorario("EntradaSalida") = "O"
 
-                DataSet1.EAD_Horario_Productivo.Rows.Add(newrowHorario)
-                Me.EAD_Horario_ProductivoTableAdapter.Update(DataSet1.EAD_Horario_Productivo)
+                'Else
+                '    OperariosBindingSource.Current("EntradaSalida") = "I"
+                '    newrowHorario("EntradaSalida") = "I"
+                'End If
+                'OperariosBindingSource.EndEdit()
+                'OperariosTableAdapter.Update(DataSet1.Operarios)
+                'newrowHorario("Fecha") = Date.Now.ToString("dd/MM/yyyy")
+                'newrowHorario("Hora") = Date.Now.ToString("HH:mm")
+                'DataSet1.EAD_Horario_Productivo.Rows.Add(newrowHorario)
+                'Me.EAD_Horario_ProductivoTableAdapter.Update(DataSet1.EAD_Horario_Productivo)
+
+                'Comprobar si es final de jornada
+                finaljornada()
 
                 Label3.Visible = True
-                Label3.Text = OperariosBindingSource.Current("NombreOperario")
-                Label3.Update()
-                System.Threading.Thread.Sleep(1000)
-                Label3.Visible = False
-            Else
-                Label2.Visible = True
+                    Label3.Text = OperariosBindingSource.Current("NombreOperario")
+                    Label3.Update()
+                    System.Threading.Thread.Sleep(1000)
+                    Label3.Visible = False
+                Else
+                    Label2.Visible = True
                     Label2.Update()
                     System.Threading.Thread.Sleep(1000)
                     Label2.Visible = False
@@ -218,5 +196,80 @@ Public Class Form1
         End If
     End Sub
 
+    Sub finaljornada()
+        Dim i As Integer
+        'Cuando sales a las 15 o mas tarde pero haces tu horario normal
+        If Date.Now.ToString("HH:mm") >= "14:59" And OperariosBindingSource.Current("Marcaje") = 3 Then
+            Me.EAD_marcajesTableAdapter.FillBy(Me.DataSet1.EAD_marcajes, OperariosBindingSource.Current("Operario"), Date.Now.ToString("dd/MM/yyyy"))
+            If EAD_marcajesBindingSource.Count = 4 Then
+                i = MsgBox("Has hecho el horario normal?", vbOKCancel, "Horario normal")
+                If i = 1 Then
+                    introducirturno1()
+                End If
+            End If
+        End If
 
+    End Sub
+    Sub introducirturno1()
+        Dim i As Integer
+        'Completamos la tabla de control horario
+        For i = 0 To 3
+            Dim newrowHorario As DataRow
+            newrowHorario = DataSet1.EAD_Horario_Productivo.NewRow
+            newrowHorario("CodigoEmpresa") = 1
+            newrowHorario("ID") = Guid.NewGuid
+            newrowHorario("CodigoTarjeta") = TextBox1.Text
+            newrowHorario("CodigoOperario") = OperariosBindingSource.Current("Operario")
+            newrowHorario("NombreOperario") = OperariosBindingSource.Current("NombreOperario")
+            ' hacemos el traspaso del horario a la segunda tabla
+            Select Case i
+                Case 0
+                    newrowHorario("EntradaSalida") = "E"
+                    If Format(Me.EAD_marcajesBindingSource.Item(i)("Fecha"), "HH:mm") <= "07:00" Then
+                        newrowHorario("Hora") = "07:00"
+                        newrowHorario("ok") = 0
+                    Else
+                        newrowHorario("Hora") = Format(Me.EAD_marcajesBindingSource.Item(i)("Fecha"), "HH:mm")
+                        newrowHorario("ok") = 1
+                    End If
+                Case 1
+                    newrowHorario("EntradaSalida") = "S"
+                    Dim horas As Long = DateDiff(DateInterval.Minute, Me.EAD_marcajesBindingSource.Item(i)("Fecha"), Me.EAD_marcajesBindingSource.Item(i + 1)("Fecha"))
+                    If horas <= 31 Then
+                        newrowHorario("Hora") = "09:30"
+                        newrowHorario("ok") = 0
+                    Else
+                        newrowHorario("Hora") = Format(Me.EAD_marcajesBindingSource.Item(i)("Fecha"), "HH:mm")
+                        newrowHorario("ok") = 1
+                    End If
+                Case 2
+                    newrowHorario("EntradaSalida") = "E"
+                    Dim horas As Long = DateDiff(DateInterval.Minute, Me.EAD_marcajesBindingSource.Item(i - 1)("Fecha"), Me.EAD_marcajesBindingSource.Item(i)("Fecha"))
+                    If horas <= 31 Then
+                        newrowHorario("Hora") = "10:00"
+                        newrowHorario("ok") = 0
+                    Else
+                        newrowHorario("Hora") = Format(Me.EAD_marcajesBindingSource.Item(i)("Fecha"), "HH:mm")
+                        newrowHorario("ok") = 1
+                    End If
+                Case 3
+                    newrowHorario("EntradaSalida") = "S"
+                    Dim horas As Long = DateDiff(DateInterval.Minute, Me.EAD_marcajesBindingSource.Item(i - 2)("Fecha"), Me.EAD_marcajesBindingSource.Item(i - 1)("Fecha"))
+                    If horas <= 31 Then
+                        newrowHorario("Hora") = "15:00"
+                        newrowHorario("ok") = 0
+                    Else
+                        newrowHorario("Hora") = Format(Date.Now, "HH:mm")
+                        newrowHorario("ok") = 1
+                    End If
+
+
+            End Select
+            newrowHorario("Fecha") = Date.Now.ToString("dd/MM/yyyy")
+            DataSet1.EAD_Horario_Productivo.Rows.Add(newrowHorario)
+            Me.EAD_Horario_ProductivoTableAdapter.Update(DataSet1.EAD_Horario_Productivo)
+        Next
+
+
+    End Sub
 End Class

@@ -742,6 +742,8 @@ Partial Public Class DataSet1
         
         Private columnrfc As Global.System.Data.DataColumn
         
+        Private columnEntradaSalida As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -1034,6 +1036,14 @@ Partial Public Class DataSet1
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property EntradaSalidaColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnEntradaSalida
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1102,9 +1112,10 @@ Partial Public Class DataSet1
                     ByVal IdOperario As System.Guid,  _
                     ByVal Aniversario As String,  _
                     ByVal marcaje As Integer,  _
-                    ByVal rfc As String) As OperariosRow
+                    ByVal rfc As String,  _
+                    ByVal EntradaSalida As String) As OperariosRow
             Dim rowOperariosRow As OperariosRow = CType(Me.NewRow,OperariosRow)
-            Dim columnValuesArray() As Object = New Object() {CodigoEmpresa, Operario, NombreOperario, FechaAlta, FechaBaja, CodigoSigla, ViaPublica, Numero1, Numero2, Escalera, Piso, Puerta, Letra, Domicilio, CodigoPostal, CodigoMunicipio, ColaMunicipio, CodigoProvincia, CodigoNacion, Telefono, Telefono2, EMail1, EMail2, Cargo1, CosteHoraNormal, CosteHoraExtra, Turno, GrupoHorario, IdOperario, Aniversario, marcaje, rfc}
+            Dim columnValuesArray() As Object = New Object() {CodigoEmpresa, Operario, NombreOperario, FechaAlta, FechaBaja, CodigoSigla, ViaPublica, Numero1, Numero2, Escalera, Piso, Puerta, Letra, Domicilio, CodigoPostal, CodigoMunicipio, ColaMunicipio, CodigoProvincia, CodigoNacion, Telefono, Telefono2, EMail1, EMail2, Cargo1, CosteHoraNormal, CosteHoraExtra, Turno, GrupoHorario, IdOperario, Aniversario, marcaje, rfc, EntradaSalida}
             rowOperariosRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowOperariosRow)
             Return rowOperariosRow
@@ -1165,6 +1176,7 @@ Partial Public Class DataSet1
             Me.columnAniversario = MyBase.Columns("Aniversario")
             Me.columnmarcaje = MyBase.Columns("marcaje")
             Me.columnrfc = MyBase.Columns("rfc")
+            Me.columnEntradaSalida = MyBase.Columns("EntradaSalida")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1234,6 +1246,8 @@ Partial Public Class DataSet1
             MyBase.Columns.Add(Me.columnmarcaje)
             Me.columnrfc = New Global.System.Data.DataColumn("rfc", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnrfc)
+            Me.columnEntradaSalida = New Global.System.Data.DataColumn("EntradaSalida", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnEntradaSalida)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnCodigoEmpresa, Me.columnOperario}, true))
             Me.columnCodigoEmpresa.AllowDBNull = false
             Me.columnOperario.AllowDBNull = false
@@ -1285,6 +1299,7 @@ Partial Public Class DataSet1
             Me.columnIdOperario.AllowDBNull = false
             Me.columnAniversario.MaxLength = 50
             Me.columnrfc.MaxLength = 10
+            Me.columnEntradaSalida.MaxLength = 1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1712,6 +1727,8 @@ Partial Public Class DataSet1
         
         Private columnHora As Global.System.Data.DataColumn
         
+        Private columnok As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub New()
@@ -1812,6 +1829,14 @@ Partial Public Class DataSet1
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public ReadOnly Property okColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnok
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1848,9 +1873,9 @@ Partial Public Class DataSet1
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
-        Public Overloads Function AddEAD_Horario_ProductivoRow(ByVal CodigoEmpresa As Integer, ByVal ID As System.Guid, ByVal CodigoTarjeta As String, ByVal CodigoOperario As Integer, ByVal NombreOperario As String, ByVal EntradaSalida As String, ByVal Fecha As String, ByVal Hora As String) As EAD_Horario_ProductivoRow
+        Public Overloads Function AddEAD_Horario_ProductivoRow(ByVal CodigoEmpresa As Integer, ByVal ID As System.Guid, ByVal CodigoTarjeta As String, ByVal CodigoOperario As Integer, ByVal NombreOperario As String, ByVal EntradaSalida As String, ByVal Fecha As String, ByVal Hora As String, ByVal ok As Integer) As EAD_Horario_ProductivoRow
             Dim rowEAD_Horario_ProductivoRow As EAD_Horario_ProductivoRow = CType(Me.NewRow,EAD_Horario_ProductivoRow)
-            Dim columnValuesArray() As Object = New Object() {CodigoEmpresa, ID, CodigoTarjeta, CodigoOperario, NombreOperario, EntradaSalida, Fecha, Hora}
+            Dim columnValuesArray() As Object = New Object() {CodigoEmpresa, ID, CodigoTarjeta, CodigoOperario, NombreOperario, EntradaSalida, Fecha, Hora, ok}
             rowEAD_Horario_ProductivoRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowEAD_Horario_ProductivoRow)
             Return rowEAD_Horario_ProductivoRow
@@ -1881,6 +1906,7 @@ Partial Public Class DataSet1
             Me.columnEntradaSalida = MyBase.Columns("EntradaSalida")
             Me.columnFecha = MyBase.Columns("Fecha")
             Me.columnHora = MyBase.Columns("Hora")
+            Me.columnok = MyBase.Columns("ok")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1902,6 +1928,8 @@ Partial Public Class DataSet1
             MyBase.Columns.Add(Me.columnFecha)
             Me.columnHora = New Global.System.Data.DataColumn("Hora", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnHora)
+            Me.columnok = New Global.System.Data.DataColumn("ok", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnok)
             Me.columnCodigoEmpresa.AllowDBNull = false
             Me.columnID.AllowDBNull = false
             Me.columnCodigoTarjeta.AllowDBNull = false
@@ -2478,6 +2506,21 @@ Partial Public Class DataSet1
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property EntradaSalida() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableOperarios.EntradaSalidaColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'EntradaSalida' de la tabla 'Operarios' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableOperarios.EntradaSalidaColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Function IsFechaBajaNull() As Boolean
             Return Me.IsNull(Me.tableOperarios.FechaBajaColumn)
         End Function
@@ -2522,6 +2565,18 @@ Partial Public Class DataSet1
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Public Sub SetrfcNull()
             Me(Me.tableOperarios.rfcColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsEntradaSalidaNull() As Boolean
+            Return Me.IsNull(Me.tableOperarios.EntradaSalidaColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetEntradaSalidaNull()
+            Me(Me.tableOperarios.EntradaSalidaColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -2665,6 +2720,33 @@ Partial Public Class DataSet1
                 Me(Me.tableEAD_Horario_Productivo.HoraColumn) = value
             End Set
         End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Property ok() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableEAD_Horario_Productivo.okColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'ok' de la tabla 'EAD_Horario_Productivo' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableEAD_Horario_Productivo.okColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Function IsokNull() As Boolean
+            Return Me.IsNull(Me.tableEAD_Horario_Productivo.okColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
+        Public Sub SetokNull()
+            Me(Me.tableEAD_Horario_Productivo.okColumn) = Global.System.Convert.DBNull
+        End Sub
     End Class
     
     '''<summary>
@@ -3299,6 +3381,7 @@ Namespace DataSet1TableAdapters
             tableMapping.ColumnMappings.Add("Aniversario", "Aniversario")
             tableMapping.ColumnMappings.Add("marcaje", "marcaje")
             tableMapping.ColumnMappings.Add("rfc", "rfc")
+            tableMapping.ColumnMappings.Add("EntradaSalida", "EntradaSalida")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -3313,7 +3396,7 @@ Namespace DataSet1TableAdapters
                 "Extra] = ?) AND ([Turno] = ?) AND ([GrupoHorario] = ?) AND ([IdOperario] = ?) AN"& _ 
                 "D ((? = 1 AND [Aniversario] IS NULL) OR ([Aniversario] = ?)) AND ((? = 1 AND [ma"& _ 
                 "rcaje] IS NULL) OR ([marcaje] = ?)) AND ((? = 1 AND [rfc] IS NULL) OR ([rfc] = ?"& _ 
-                ")))"
+                ")) AND ((? = 1 AND [EntradaSalida] IS NULL) OR ([EntradaSalida] = ?)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_CodigoEmpresa", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CodigoEmpresa", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_Operario", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Operario", Global.System.Data.DataRowVersion.Original, false, Nothing))
@@ -3351,6 +3434,8 @@ Namespace DataSet1TableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_marcaje", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "marcaje", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_rfc", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "rfc", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_rfc", Global.System.Data.OleDb.OleDbType.WChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "rfc", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_EntradaSalida", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "EntradaSalida", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_EntradaSalida", Global.System.Data.OleDb.OleDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "EntradaSalida", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.InsertCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [Operarios] ([CodigoEmpresa], [Operario], [NombreOperario], [FechaAlt"& _ 
@@ -3358,8 +3443,9 @@ Namespace DataSet1TableAdapters
                 "[Piso], [Puerta], [Letra], [Domicilio], [CodigoPostal], [CodigoMunicipio], [Cola"& _ 
                 "Municipio], [CodigoProvincia], [CodigoNacion], [Telefono], [Telefono2], [EMail1]"& _ 
                 ", [EMail2], [Cargo1], [CosteHoraNormal], [CosteHoraExtra], [Turno], [GrupoHorari"& _ 
-                "o], [IdOperario], [Aniversario], [marcaje], [rfc]) VALUES (?, ?, ?, ?, ?, ?, ?, "& _ 
-                "?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+                "o], [IdOperario], [Aniversario], [marcaje], [rfc], [EntradaSalida]) VALUES (?, ?"& _ 
+                ", ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, "& _ 
+                "?, ?, ?, ?, ?)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CodigoEmpresa", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CodigoEmpresa", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Operario", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Operario", Global.System.Data.DataRowVersion.Current, false, Nothing))
@@ -3393,6 +3479,7 @@ Namespace DataSet1TableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Aniversario", Global.System.Data.OleDb.OleDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Aniversario", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("marcaje", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "marcaje", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("rfc", Global.System.Data.OleDb.OleDbType.WChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "rfc", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("EntradaSalida", Global.System.Data.OleDb.OleDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "EntradaSalida", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [Operarios] SET [CodigoEmpresa] = ?, [Operario] = ?, [NombreOperario] = ?,"& _ 
@@ -3402,17 +3489,19 @@ Namespace DataSet1TableAdapters
                 "odigoProvincia] = ?, [CodigoNacion] = ?, [Telefono] = ?, [Telefono2] = ?, [EMail"& _ 
                 "1] = ?, [EMail2] = ?, [Cargo1] = ?, [CosteHoraNormal] = ?, [CosteHoraExtra] = ?,"& _ 
                 " [Turno] = ?, [GrupoHorario] = ?, [IdOperario] = ?, [Aniversario] = ?, [marcaje]"& _ 
-                " = ?, [rfc] = ? WHERE (([CodigoEmpresa] = ?) AND ([Operario] = ?) AND ([NombreOp"& _ 
-                "erario] = ?) AND ([FechaAlta] = ?) AND ((? = 1 AND [FechaBaja] IS NULL) OR ([Fec"& _ 
-                "haBaja] = ?)) AND ([CodigoSigla] = ?) AND ([ViaPublica] = ?) AND ([Numero1] = ?)"& _ 
-                " AND ([Numero2] = ?) AND ([Escalera] = ?) AND ([Piso] = ?) AND ([Puerta] = ?) AN"& _ 
-                "D ([Letra] = ?) AND ([Domicilio] = ?) AND ([CodigoPostal] = ?) AND ([CodigoMunic"& _ 
-                "ipio] = ?) AND ([ColaMunicipio] = ?) AND ([CodigoProvincia] = ?) AND ([CodigoNac"& _ 
-                "ion] = ?) AND ([Telefono] = ?) AND ([Telefono2] = ?) AND ([EMail1] = ?) AND ([EM"& _ 
-                "ail2] = ?) AND ([Cargo1] = ?) AND ([CosteHoraNormal] = ?) AND ([CosteHoraExtra] "& _ 
-                "= ?) AND ([Turno] = ?) AND ([GrupoHorario] = ?) AND ([IdOperario] = ?) AND ((? ="& _ 
-                " 1 AND [Aniversario] IS NULL) OR ([Aniversario] = ?)) AND ((? = 1 AND [marcaje] "& _ 
-                "IS NULL) OR ([marcaje] = ?)) AND ((? = 1 AND [rfc] IS NULL) OR ([rfc] = ?)))"
+                " = ?, [rfc] = ?, [EntradaSalida] = ? WHERE (([CodigoEmpresa] = ?) AND ([Operario"& _ 
+                "] = ?) AND ([NombreOperario] = ?) AND ([FechaAlta] = ?) AND ((? = 1 AND [FechaBa"& _ 
+                "ja] IS NULL) OR ([FechaBaja] = ?)) AND ([CodigoSigla] = ?) AND ([ViaPublica] = ?"& _ 
+                ") AND ([Numero1] = ?) AND ([Numero2] = ?) AND ([Escalera] = ?) AND ([Piso] = ?) "& _ 
+                "AND ([Puerta] = ?) AND ([Letra] = ?) AND ([Domicilio] = ?) AND ([CodigoPostal] ="& _ 
+                " ?) AND ([CodigoMunicipio] = ?) AND ([ColaMunicipio] = ?) AND ([CodigoProvincia]"& _ 
+                " = ?) AND ([CodigoNacion] = ?) AND ([Telefono] = ?) AND ([Telefono2] = ?) AND (["& _ 
+                "EMail1] = ?) AND ([EMail2] = ?) AND ([Cargo1] = ?) AND ([CosteHoraNormal] = ?) A"& _ 
+                "ND ([CosteHoraExtra] = ?) AND ([Turno] = ?) AND ([GrupoHorario] = ?) AND ([IdOpe"& _ 
+                "rario] = ?) AND ((? = 1 AND [Aniversario] IS NULL) OR ([Aniversario] = ?)) AND ("& _ 
+                "(? = 1 AND [marcaje] IS NULL) OR ([marcaje] = ?)) AND ((? = 1 AND [rfc] IS NULL)"& _ 
+                " OR ([rfc] = ?)) AND ((? = 1 AND [EntradaSalida] IS NULL) OR ([EntradaSalida] = "& _ 
+                "?)))"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CodigoEmpresa", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CodigoEmpresa", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Operario", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Operario", Global.System.Data.DataRowVersion.Current, false, Nothing))
@@ -3446,6 +3535,7 @@ Namespace DataSet1TableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Aniversario", Global.System.Data.OleDb.OleDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Aniversario", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("marcaje", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "marcaje", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("rfc", Global.System.Data.OleDb.OleDbType.WChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "rfc", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("EntradaSalida", Global.System.Data.OleDb.OleDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "EntradaSalida", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_CodigoEmpresa", Global.System.Data.OleDb.OleDbType.SmallInt, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CodigoEmpresa", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_Operario", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Operario", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_NombreOperario", Global.System.Data.OleDb.OleDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "NombreOperario", Global.System.Data.DataRowVersion.Original, false, Nothing))
@@ -3482,6 +3572,8 @@ Namespace DataSet1TableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_marcaje", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "marcaje", Global.System.Data.DataRowVersion.Original, false, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_rfc", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "rfc", Global.System.Data.DataRowVersion.Original, true, Nothing))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_rfc", Global.System.Data.OleDb.OleDbType.WChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "rfc", Global.System.Data.DataRowVersion.Original, false, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("IsNull_EntradaSalida", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "EntradaSalida", Global.System.Data.DataRowVersion.Original, true, Nothing))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Original_EntradaSalida", Global.System.Data.OleDb.OleDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "EntradaSalida", Global.System.Data.DataRowVersion.Original, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3501,16 +3593,16 @@ Namespace DataSet1TableAdapters
                 ", ViaPublica, Numero1, Numero2, Escalera, Piso, Puerta, Letra, Domicilio, Codigo"& _ 
                 "Postal, CodigoMunicipio, ColaMunicipio, CodigoProvincia, CodigoNacion, Telefono,"& _ 
                 " Telefono2, EMail1, EMail2, Cargo1, CosteHoraNormal, CosteHoraExtra, Turno, Grup"& _ 
-                "oHorario, IdOperario, Aniversario, marcaje, rfc FROM Operarios"
+                "oHorario, IdOperario, Aniversario, marcaje, rfc, EntradaSalida FROM Operarios"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT        CodigoEmpresa, Operario, NombreOperario, FechaAlta, FechaBaja, Codi"& _ 
-                "goSigla, ViaPublica, Numero1, Numero2, Escalera, Piso, Puerta, Letra, Domicilio,"& _ 
-                " CodigoPostal, CodigoMunicipio, ColaMunicipio, CodigoProvincia, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              "& _ 
-                "           CodigoNacion, Telefono, Telefono2, EMail1, EMail2, Cargo1, CosteHoraN"& _ 
-                "ormal, CosteHoraExtra, Turno, GrupoHorario, IdOperario, Aniversario, marcaje, rf"& _ 
-                "c"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Operarios"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (CodigoEmpresa = 1) AND (rfc = ?)"
+            Me._commandCollection(1).CommandText = "SELECT CodigoEmpresa, Operario, NombreOperario, FechaAlta, FechaBaja, CodigoSigla"& _ 
+                ", ViaPublica, Numero1, Numero2, Escalera, Piso, Puerta, Letra, Domicilio, Codigo"& _ 
+                "Postal, CodigoMunicipio, ColaMunicipio, CodigoProvincia, CodigoNacion, Telefono,"& _ 
+                " Telefono2, EMail1, EMail2, Cargo1, CosteHoraNormal, CosteHoraExtra, Turno, Grup"& _ 
+                "oHorario, IdOperario, Aniversario, marcaje, rfc, EntradaSalida FROM Operarios WH"& _ 
+                "ERE (CodigoEmpresa = 1) AND (rfc = ?)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("rfc", Global.System.Data.OleDb.OleDbType.WChar, 10, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "rfc", Global.System.Data.DataRowVersion.Current, false, Nothing))
         End Sub
@@ -3637,7 +3729,8 @@ Namespace DataSet1TableAdapters
                     ByVal Original_IdOperario As System.Guid,  _
                     ByVal Original_Aniversario As String,  _
                     ByVal Original_marcaje As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_rfc As String) As Integer
+                    ByVal Original_rfc As String,  _
+                    ByVal Original_EntradaSalida As String) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_CodigoEmpresa,Short)
             Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_Operario,Integer)
             If (Original_NombreOperario Is Nothing) Then
@@ -3774,6 +3867,13 @@ Namespace DataSet1TableAdapters
                 Me.Adapter.DeleteCommand.Parameters(34).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(35).Value = CType(Original_rfc,String)
             End If
+            If (Original_EntradaSalida Is Nothing) Then
+                Me.Adapter.DeleteCommand.Parameters(36).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(37).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.DeleteCommand.Parameters(36).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(37).Value = CType(Original_EntradaSalida,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -3825,7 +3925,8 @@ Namespace DataSet1TableAdapters
                     ByVal IdOperario As System.Guid,  _
                     ByVal Aniversario As String,  _
                     ByVal marcaje As Global.System.Nullable(Of Integer),  _
-                    ByVal rfc As String) As Integer
+                    ByVal rfc As String,  _
+                    ByVal EntradaSalida As String) As Integer
             Me.Adapter.InsertCommand.Parameters(0).Value = CType(CodigoEmpresa,Short)
             Me.Adapter.InsertCommand.Parameters(1).Value = CType(Operario,Integer)
             If (NombreOperario Is Nothing) Then
@@ -3954,6 +4055,11 @@ Namespace DataSet1TableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(31).Value = CType(rfc,String)
             End If
+            If (EntradaSalida Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(32).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(32).Value = CType(EntradaSalida,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -4006,6 +4112,7 @@ Namespace DataSet1TableAdapters
                     ByVal Aniversario As String,  _
                     ByVal marcaje As Global.System.Nullable(Of Integer),  _
                     ByVal rfc As String,  _
+                    ByVal EntradaSalida As String,  _
                     ByVal Original_CodigoEmpresa As Short,  _
                     ByVal Original_Operario As Integer,  _
                     ByVal Original_NombreOperario As String,  _
@@ -4037,7 +4144,8 @@ Namespace DataSet1TableAdapters
                     ByVal Original_IdOperario As System.Guid,  _
                     ByVal Original_Aniversario As String,  _
                     ByVal Original_marcaje As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_rfc As String) As Integer
+                    ByVal Original_rfc As String,  _
+                    ByVal Original_EntradaSalida As String) As Integer
             Me.Adapter.UpdateCommand.Parameters(0).Value = CType(CodigoEmpresa,Short)
             Me.Adapter.UpdateCommand.Parameters(1).Value = CType(Operario,Integer)
             If (NombreOperario Is Nothing) Then
@@ -4166,141 +4274,153 @@ Namespace DataSet1TableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(31).Value = CType(rfc,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_CodigoEmpresa,Short)
-            Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_Operario,Integer)
+            If (EntradaSalida Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(EntradaSalida,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_CodigoEmpresa,Short)
+            Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_Operario,Integer)
             If (Original_NombreOperario Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_NombreOperario")
             Else
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_NombreOperario,String)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_NombreOperario,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_FechaAlta,Date)
+            Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_FechaAlta,Date)
             If (Original_FechaBaja.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_FechaBaja.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_FechaBaja.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(38).Value = Global.System.DBNull.Value
             End If
             If (Original_CodigoSigla Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_CodigoSigla")
             Else
-                Me.Adapter.UpdateCommand.Parameters(38).Value = CType(Original_CodigoSigla,String)
+                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_CodigoSigla,String)
             End If
             If (Original_ViaPublica Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_ViaPublica")
             Else
-                Me.Adapter.UpdateCommand.Parameters(39).Value = CType(Original_ViaPublica,String)
+                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_ViaPublica,String)
             End If
             If (Original_Numero1 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Numero1")
             Else
-                Me.Adapter.UpdateCommand.Parameters(40).Value = CType(Original_Numero1,String)
+                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_Numero1,String)
             End If
             If (Original_Numero2 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Numero2")
             Else
-                Me.Adapter.UpdateCommand.Parameters(41).Value = CType(Original_Numero2,String)
+                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_Numero2,String)
             End If
             If (Original_Escalera Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Escalera")
             Else
-                Me.Adapter.UpdateCommand.Parameters(42).Value = CType(Original_Escalera,String)
+                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_Escalera,String)
             End If
             If (Original_Piso Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Piso")
             Else
-                Me.Adapter.UpdateCommand.Parameters(43).Value = CType(Original_Piso,String)
+                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_Piso,String)
             End If
             If (Original_Puerta Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Puerta")
             Else
-                Me.Adapter.UpdateCommand.Parameters(44).Value = CType(Original_Puerta,String)
+                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_Puerta,String)
             End If
             If (Original_Letra Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Letra")
             Else
-                Me.Adapter.UpdateCommand.Parameters(45).Value = CType(Original_Letra,String)
+                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_Letra,String)
             End If
             If (Original_Domicilio Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Domicilio")
             Else
-                Me.Adapter.UpdateCommand.Parameters(46).Value = CType(Original_Domicilio,String)
+                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Original_Domicilio,String)
             End If
             If (Original_CodigoPostal Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_CodigoPostal")
             Else
-                Me.Adapter.UpdateCommand.Parameters(47).Value = CType(Original_CodigoPostal,String)
+                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_CodigoPostal,String)
             End If
             If (Original_CodigoMunicipio Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_CodigoMunicipio")
             Else
-                Me.Adapter.UpdateCommand.Parameters(48).Value = CType(Original_CodigoMunicipio,String)
+                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_CodigoMunicipio,String)
             End If
             If (Original_ColaMunicipio Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_ColaMunicipio")
             Else
-                Me.Adapter.UpdateCommand.Parameters(49).Value = CType(Original_ColaMunicipio,String)
+                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(Original_ColaMunicipio,String)
             End If
             If (Original_CodigoProvincia Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_CodigoProvincia")
             Else
-                Me.Adapter.UpdateCommand.Parameters(50).Value = CType(Original_CodigoProvincia,String)
+                Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_CodigoProvincia,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(51).Value = CType(Original_CodigoNacion,Short)
+            Me.Adapter.UpdateCommand.Parameters(52).Value = CType(Original_CodigoNacion,Short)
             If (Original_Telefono Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Telefono")
             Else
-                Me.Adapter.UpdateCommand.Parameters(52).Value = CType(Original_Telefono,String)
+                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_Telefono,String)
             End If
             If (Original_Telefono2 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Telefono2")
             Else
-                Me.Adapter.UpdateCommand.Parameters(53).Value = CType(Original_Telefono2,String)
+                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(Original_Telefono2,String)
             End If
             If (Original_EMail1 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_EMail1")
             Else
-                Me.Adapter.UpdateCommand.Parameters(54).Value = CType(Original_EMail1,String)
+                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(Original_EMail1,String)
             End If
             If (Original_EMail2 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_EMail2")
             Else
-                Me.Adapter.UpdateCommand.Parameters(55).Value = CType(Original_EMail2,String)
+                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(Original_EMail2,String)
             End If
             If (Original_Cargo1 Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_Cargo1")
             Else
-                Me.Adapter.UpdateCommand.Parameters(56).Value = CType(Original_Cargo1,String)
+                Me.Adapter.UpdateCommand.Parameters(57).Value = CType(Original_Cargo1,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(57).Value = CType(Original_CosteHoraNormal,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(58).Value = CType(Original_CosteHoraExtra,Decimal)
-            Me.Adapter.UpdateCommand.Parameters(59).Value = CType(Original_Turno,Short)
+            Me.Adapter.UpdateCommand.Parameters(58).Value = CType(Original_CosteHoraNormal,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(59).Value = CType(Original_CosteHoraExtra,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(60).Value = CType(Original_Turno,Short)
             If (Original_GrupoHorario Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("Original_GrupoHorario")
             Else
-                Me.Adapter.UpdateCommand.Parameters(60).Value = CType(Original_GrupoHorario,String)
+                Me.Adapter.UpdateCommand.Parameters(61).Value = CType(Original_GrupoHorario,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(61).Value = CType(Original_IdOperario,System.Guid)
+            Me.Adapter.UpdateCommand.Parameters(62).Value = CType(Original_IdOperario,System.Guid)
             If (Original_Aniversario Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(63).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(64).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(62).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(Original_Aniversario,String)
+                Me.Adapter.UpdateCommand.Parameters(63).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(Original_Aniversario,String)
             End If
             If (Original_marcaje.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(Original_marcaje.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(Original_marcaje.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(64).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(65).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(65).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(66).Value = Global.System.DBNull.Value
             End If
             If (Original_rfc Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(67).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(68).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(66).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(Original_rfc,String)
+                Me.Adapter.UpdateCommand.Parameters(67).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(68).Value = CType(Original_rfc,String)
+            End If
+            If (Original_EntradaSalida Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(70).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(69).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(70).Value = CType(Original_EntradaSalida,String)
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -4352,6 +4472,7 @@ Namespace DataSet1TableAdapters
                     ByVal Aniversario As String,  _
                     ByVal marcaje As Global.System.Nullable(Of Integer),  _
                     ByVal rfc As String,  _
+                    ByVal EntradaSalida As String,  _
                     ByVal Original_CodigoEmpresa As Short,  _
                     ByVal Original_Operario As Integer,  _
                     ByVal Original_NombreOperario As String,  _
@@ -4383,8 +4504,9 @@ Namespace DataSet1TableAdapters
                     ByVal Original_IdOperario As System.Guid,  _
                     ByVal Original_Aniversario As String,  _
                     ByVal Original_marcaje As Global.System.Nullable(Of Integer),  _
-                    ByVal Original_rfc As String) As Integer
-            Return Me.Update(Original_CodigoEmpresa, Original_Operario, NombreOperario, FechaAlta, FechaBaja, CodigoSigla, ViaPublica, Numero1, Numero2, Escalera, Piso, Puerta, Letra, Domicilio, CodigoPostal, CodigoMunicipio, ColaMunicipio, CodigoProvincia, CodigoNacion, Telefono, Telefono2, EMail1, EMail2, Cargo1, CosteHoraNormal, CosteHoraExtra, Turno, GrupoHorario, IdOperario, Aniversario, marcaje, rfc, Original_CodigoEmpresa, Original_Operario, Original_NombreOperario, Original_FechaAlta, Original_FechaBaja, Original_CodigoSigla, Original_ViaPublica, Original_Numero1, Original_Numero2, Original_Escalera, Original_Piso, Original_Puerta, Original_Letra, Original_Domicilio, Original_CodigoPostal, Original_CodigoMunicipio, Original_ColaMunicipio, Original_CodigoProvincia, Original_CodigoNacion, Original_Telefono, Original_Telefono2, Original_EMail1, Original_EMail2, Original_Cargo1, Original_CosteHoraNormal, Original_CosteHoraExtra, Original_Turno, Original_GrupoHorario, Original_IdOperario, Original_Aniversario, Original_marcaje, Original_rfc)
+                    ByVal Original_rfc As String,  _
+                    ByVal Original_EntradaSalida As String) As Integer
+            Return Me.Update(Original_CodigoEmpresa, Original_Operario, NombreOperario, FechaAlta, FechaBaja, CodigoSigla, ViaPublica, Numero1, Numero2, Escalera, Piso, Puerta, Letra, Domicilio, CodigoPostal, CodigoMunicipio, ColaMunicipio, CodigoProvincia, CodigoNacion, Telefono, Telefono2, EMail1, EMail2, Cargo1, CosteHoraNormal, CosteHoraExtra, Turno, GrupoHorario, IdOperario, Aniversario, marcaje, rfc, EntradaSalida, Original_CodigoEmpresa, Original_Operario, Original_NombreOperario, Original_FechaAlta, Original_FechaBaja, Original_CodigoSigla, Original_ViaPublica, Original_Numero1, Original_Numero2, Original_Escalera, Original_Piso, Original_Puerta, Original_Letra, Original_Domicilio, Original_CodigoPostal, Original_CodigoMunicipio, Original_ColaMunicipio, Original_CodigoProvincia, Original_CodigoNacion, Original_Telefono, Original_Telefono2, Original_EMail1, Original_EMail2, Original_Cargo1, Original_CosteHoraNormal, Original_CosteHoraExtra, Original_Turno, Original_GrupoHorario, Original_IdOperario, Original_Aniversario, Original_marcaje, Original_rfc, Original_EntradaSalida)
         End Function
     End Class
     
@@ -4552,19 +4674,26 @@ Namespace DataSet1TableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.OleDb.OleDbCommand(1) {}
+            Me._commandCollection = New Global.System.Data.OleDb.OleDbCommand(2) {}
             Me._commandCollection(0) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT Operario, Fecha FROM dbo.EAD_marcajes"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT        Operario, Fecha"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            EAD_marcajes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Fecha "& _ 
-                "> ? AND Fecha < ?) AND (Operario = ?)"
+            Me._commandCollection(1).CommandText = "SELECT        Operario, Fecha"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            EAD_marcajes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Operar"& _ 
+                "io = ?) AND (Fecha >= ?)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Fecha", Global.System.Data.OleDb.OleDbType.DBTimeStamp, 8, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Fecha", Global.System.Data.DataRowVersion.Current, false, Nothing))
-            Me._commandCollection(1).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Fecha1", Global.System.Data.OleDb.OleDbType.DBTimeStamp, 8, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Fecha", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Operario", Global.System.Data.OleDb.OleDbType.[Integer], 4, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Operario", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Fecha", Global.System.Data.OleDb.OleDbType.DBTimeStamp, 8, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Fecha", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(2) = New Global.System.Data.OleDb.OleDbCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT        Operario, Fecha"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            EAD_marcajes"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Fecha "& _ 
+                "> ? AND Fecha < ?) AND (Operario = ?)"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Fecha", Global.System.Data.OleDb.OleDbType.DBTimeStamp, 8, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Fecha", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Fecha1", Global.System.Data.OleDb.OleDbType.DBTimeStamp, 8, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Fecha", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Operario", Global.System.Data.OleDb.OleDbType.[Integer], 4, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Operario", Global.System.Data.DataRowVersion.Current, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4595,8 +4724,36 @@ Namespace DataSet1TableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function Fillby5min(ByVal dataTable As DataSet1.EAD_marcajesDataTable, ByVal Fecha As Date, ByVal Fecha1 As Date, ByVal Operario As Integer) As Integer
+        Public Overloads Overridable Function FillBy(ByVal dataTable As DataSet1.EAD_marcajesDataTable, ByVal Operario As Integer, ByVal Fecha As Date) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Operario,Integer)
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(Fecha,Date)
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataBy1(ByVal Operario As Integer, ByVal Fecha As Date) As DataSet1.EAD_marcajesDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(Operario,Integer)
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(Fecha,Date)
+            Dim dataTable As DataSet1.EAD_marcajesDataTable = New DataSet1.EAD_marcajesDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function Fillby5min(ByVal dataTable As DataSet1.EAD_marcajesDataTable, ByVal Fecha As Date, ByVal Fecha1 As Date, ByVal Operario As Integer) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(Fecha,Date)
             Me.Adapter.SelectCommand.Parameters(1).Value = CType(Fecha1,Date)
             Me.Adapter.SelectCommand.Parameters(2).Value = CType(Operario,Integer)
@@ -4612,7 +4769,7 @@ Namespace DataSet1TableAdapters
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
         Public Overloads Overridable Function GetDataBy(ByVal Fecha As Date, ByVal Fecha1 As Date, ByVal Operario As Integer) As DataSet1.EAD_marcajesDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
             Me.Adapter.SelectCommand.Parameters(0).Value = CType(Fecha,Date)
             Me.Adapter.SelectCommand.Parameters(1).Value = CType(Fecha1,Date)
             Me.Adapter.SelectCommand.Parameters(2).Value = CType(Operario,Integer)
@@ -4861,12 +5018,13 @@ Namespace DataSet1TableAdapters
             tableMapping.ColumnMappings.Add("EntradaSalida", "EntradaSalida")
             tableMapping.ColumnMappings.Add("Fecha", "Fecha")
             tableMapping.ColumnMappings.Add("Hora", "Hora")
+            tableMapping.ColumnMappings.Add("ok", "ok")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.InsertCommand = New Global.System.Data.OleDb.OleDbCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [ElectroAD].[dbo].[EAD_Horario_Productivo] ([CodigoEmpresa], [ID], [C"& _ 
-                "odigoTarjeta], [CodigoOperario], [NombreOperario], [EntradaSalida], [Fecha], [Ho"& _ 
-                "ra]) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [EAD_Horario_Productivo] ([CodigoEmpresa], [ID], [CodigoTarjeta], [Co"& _ 
+                "digoOperario], [NombreOperario], [EntradaSalida], [Fecha], [Hora], [ok]) VALUES "& _ 
+                "(?, ?, ?, ?, ?, ?, ?, ?, ?)"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CodigoEmpresa", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CodigoEmpresa", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ID", Global.System.Data.OleDb.OleDbType.Guid, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ID", Global.System.Data.DataRowVersion.Current, false, Nothing))
@@ -4876,6 +5034,7 @@ Namespace DataSet1TableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("EntradaSalida", Global.System.Data.OleDb.OleDbType.[Char], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "EntradaSalida", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Fecha", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Fecha", Global.System.Data.DataRowVersion.Current, false, Nothing))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Hora", Global.System.Data.OleDb.OleDbType.VarWChar, 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Hora", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("ok", Global.System.Data.OleDb.OleDbType.[Integer], 0, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "ok", Global.System.Data.DataRowVersion.Current, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4888,12 +5047,20 @@ Namespace DataSet1TableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.OleDb.OleDbCommand(0) {}
+            Me._commandCollection = New Global.System.Data.OleDb.OleDbCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.OleDb.OleDbCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT CodigoEmpresa, ID, CodigoTarjeta, CodigoOperario, NombreOperario, EntradaS"& _ 
-                "alida, Fecha, Hora FROM dbo.EAD_Horario_Productivo"
+                "alida, Fecha, Hora, ok FROM EAD_Horario_Productivo"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1) = New Global.System.Data.OleDb.OleDbCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT CodigoEmpresa, ID, CodigoTarjeta, CodigoOperario, NombreOperario, EntradaS"& _ 
+                "alida, Fecha, Hora, ok FROM EAD_Horario_Productivo WHERE (CodigoOperario = ?) AN"& _ 
+                "D (Fecha = ?)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("CodigoOperario", Global.System.Data.OleDb.OleDbType.[Integer], 4, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "CodigoOperario", Global.System.Data.DataRowVersion.Current, false, Nothing))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.OleDb.OleDbParameter("Fecha", Global.System.Data.OleDb.OleDbType.WChar, 3, Global.System.Data.ParameterDirection.Input, CType(0,Byte), CType(0,Byte), "Fecha", Global.System.Data.DataRowVersion.Current, false, Nothing))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4915,6 +5082,42 @@ Namespace DataSet1TableAdapters
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
         Public Overloads Overridable Function GetData() As DataSet1.EAD_Horario_ProductivoDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            Dim dataTable As DataSet1.EAD_Horario_ProductivoDataTable = New DataSet1.EAD_Horario_ProductivoDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillBy(ByVal dataTable As DataSet1.EAD_Horario_ProductivoDataTable, ByVal CodigoOperario As Integer, ByVal Fecha As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(CodigoOperario,Integer)
+            If (Fecha Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Fecha")
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Fecha,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataBy(ByVal CodigoOperario As Integer, ByVal Fecha As String) As DataSet1.EAD_Horario_ProductivoDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            Me.Adapter.SelectCommand.Parameters(0).Value = CType(CodigoOperario,Integer)
+            If (Fecha Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Fecha")
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(Fecha,String)
+            End If
             Dim dataTable As DataSet1.EAD_Horario_ProductivoDataTable = New DataSet1.EAD_Horario_ProductivoDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
@@ -4952,7 +5155,7 @@ Namespace DataSet1TableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal CodigoEmpresa As Integer, ByVal ID As System.Guid, ByVal CodigoTarjeta As String, ByVal CodigoOperario As Integer, ByVal NombreOperario As String, ByVal EntradaSalida As String, ByVal Fecha As String, ByVal Hora As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal CodigoEmpresa As Integer, ByVal ID As System.Guid, ByVal CodigoTarjeta As String, ByVal CodigoOperario As Integer, ByVal NombreOperario As String, ByVal EntradaSalida As String, ByVal Fecha As String, ByVal Hora As String, ByVal ok As Global.System.Nullable(Of Integer)) As Integer
             Me.Adapter.InsertCommand.Parameters(0).Value = CType(CodigoEmpresa,Integer)
             Me.Adapter.InsertCommand.Parameters(1).Value = CType(ID,System.Guid)
             If (CodigoTarjeta Is Nothing) Then
@@ -4980,6 +5183,11 @@ Namespace DataSet1TableAdapters
                 Throw New Global.System.ArgumentNullException("Hora")
             Else
                 Me.Adapter.InsertCommand.Parameters(7).Value = CType(Hora,String)
+            End If
+            If (ok.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(8).Value = CType(ok.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(8).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
